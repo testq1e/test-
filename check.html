@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fox Trade - MLM Crypto Investment</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #00b894;
+            --danger: #d63031;
+            --warning: #fdcb6e;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, #a29bfe 100%);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary:hover {
+            background-color: #5649d2;
+            border-color: #5649d2;
+        }
+        
+        .sidebar {
+            background: white;
+            min-height: 100vh;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar .nav-link {
+            color: var(--dark);
+            border-radius: 8px;
+            margin: 5px 10px;
+            font-weight: 500;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(108, 92, 231, 0.1);
+        }
+        
+        .sidebar .nav-link.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .main-content {
+            padding: 20px;
+        }
+        
+        .badge {
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+        
+        .badge-success {
+            background-color: var(--secondary);
+        }
+        
+        .badge-warning {
+            background-color: var(--warning);
+            color: var(--dark);
+        }
+        
+        .badge-danger {
+            background-color: var(--danger);
+        }
+        
+        .table th {
+            font-weight: 600;
+            border-top: none;
+        }
+        
+        .package-card {
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .package-card .card-body {
+            padding: 25px;
+        }
+        
+        .package-card .price {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 15px 0;
+            color: var(--primary);
+        }
+        
+        .package-card ul {
+            padding-left: 0;
+        }
+        
+        .package-card ul li {
+            list-style: none;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .package-card ul li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+        }
+        
+        .premium-package {
+            border: 2px solid var(--warning);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .premium-package:after {
+            content: "BEST VALUE";
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: var(--warning);
+            color: var(--dark);
+            padding: 3px 30px;
+            font-size: 12px;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+        
+        .dashboard-card {
+            border-radius: 12px;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .dashboard-card .card-icon {
+            font-size: 30px;
+            opacity: 0.8;
+        }
+        
+        .dashboard-card .card-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .dashboard-card .card-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .income-card {
+            border-radius: 12px;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .income-card .card-value {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .income-card .card-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .income-card .card-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        .modal-header {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .form-control {
+            border-radius: 8px;
+            padding: 10px 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-control:focus {
+            box-shadow: 0 0 0 0.25rem rgba(108, 92, 231, 0.25);
+            border-color: var(--primary);
+        }
+        
+        .progress {
+            height: 8px;
+            border-radius: 4px;
+        }
+        
+        .progress-bar {
+            background-color: var(--primary);
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--primary);
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--dark);
+            border: none;
+            padding: 10px 20px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                min-height: auto;
+                position: static;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Auth Screens -->
+    <div id="authScreens">
+        <!-- Registration Modal -->
+        <div class="modal fade" id="registerModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Create Fox Trade Account</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="registerForm">
+                            <div class="mb-3">
+                                <label for="regUsername" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="regUsername" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="regEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="regEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="regPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="regPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="regReferral" class="form-label">Referral ID (Optional)</label>
+                                <input type="text" class="form-control" id="regReferral">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <p>Already have an account? <a href="#" onclick="showLogin()" class="text-primary">Login</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Fox Trade Login</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="loginEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="loginEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="loginPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <p>Don't have an account? <a href="#" onclick="showRegister()" class="text-primary">Register</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App (Hidden until auth) -->
+    <div id="app" style="display: none;">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand navbar-dark hero-gradient">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-fox me-2"></i>FOX TRADE
+                </a>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i>
+                            <span id="usernameDisplay">User</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="showSection('dashboard')"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showSection('profile')"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                    <div class="position-sticky pt-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#" onclick="showSection('dashboard')">
+                                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" onclick="showSection('invest')">
+                                    <i class="fas fa-coins me-2"></i>Invest
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" onclick="showSection('earnings')">
+                                    <i class="fas fa-money-bill-wave me-2"></i>Earnings
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" onclick="showSection('team')">
+                                    <i class="fas fa-users me-2"></i>My Team
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" onclick="showSection('withdraw')">
+                                    <i class="fas fa-wallet me-2"></i>Withdraw
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" onclick="showSection('rewards')">
+                                    <i class="fas fa-trophy me-2"></i>Rewards
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Main Content Area -->
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4 main-content">
+                    <!-- Dashboard Section -->
+                    <div id="dashboardSection">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2 class="h4 fw-bold">Dashboard Overview</h2>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <div class="dashboard-card" style="background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <div class="card-label">Total Balance</div>
+                                            <div class="card-value" id="totalBalance">$0.00</div>
+                                        </div>
+                                        <div class="card-icon">
+                                            <i class="fas fa-wallet"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dashboard-card" style="background: linear-gradient(135deg, #00b894 0%, #55efc4 100%);">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <div class="card-label">Today's Earnings</div>
+                                            <div class="card-value" id="dailyEarnings">$0.00</div>
+                                        </div>
+                                        <div class="card-icon">
+                                            <i class="fas fa-dollar-sign"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dashboard-card" style="background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <div class="card-label">Team Size</div>
+                                            <div class="card-value" id="teamSize">0</div>
+                                        </div>
+                                        <div class="card-icon">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="m-0 fw-bold">Recent Earnings</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover" id="earningsTable" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Type</th>
+                                                        <th>Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="earningsTableBody">
+                                                    <tr>
+                                                        <td colspan="3" class="text-center">No recent earnings</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="m-0 fw-bold">My Packages</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover" id="packagesTable" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Package</th>
+                                                        <th>Invested</th>
+                                                        <th>Earned</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="packagesTableBody">
+                                                    <tr>
+                                                        <td colspan="4" class="text-center">No active packages</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Invest Section -->
+                    <div id="investSection" style="display: none;">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2 class="h4 fw-bold">Investment Packages</h2>
+                        </div>
+                        
+                        <div class="row">
+                            <!-- Basic Package -->
+                            <div class="col-md-4 mb-4">
+                                <div class="card package-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title fw-bold">BASIC PACKAGE</h5>
+                                        <div class="price">$10 USDT</div>
+                                        <ul class="mb-4">
+                                            <li>Daily 2% for 150 days</li>
+                                            <li>Up to 3X Income</li>
+                                            <li>Direct Income 10%</li>
+                                        </ul>
+                                        <button class="btn btn-primary" onclick="showDepositModal(10)">Invest Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Standard Package -->
+                            <div class="col-md-4 mb-4">
+                                <div class="card package-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title fw-bold">STANDARD PACKAGE</h5>
+                                        <div class="price">$25 USDT</div>
+                                        <ul class="mb-4">
+                                            <li>Daily 2% for 150 days</li>
+                                            <li>Up to 3X Income</li>
+                                            <li>Direct Income 10%</li>
+                                            <li>Level Income 1-10</li>
+                                        </ul>
+                                        <button class="btn btn-primary" onclick="showDepositModal(25)">Invest Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Silver Package -->
+                            <div class="col-md-4 mb-4">
+                                <div class="card package-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title fw-bold">SILVER PACKAGE</h5>
+                                        <div class="price">$50 USDT</div>
+                                        <ul class="mb-4">
+                                            <li>Daily 2% for 150 days</li>
+                                            <li>Up to 3X Income</li>
+                                            <li>Direct Income 10%</li>
+                                            <li>Level Income 1-10</li>
+                                            <li>Upgrade Income 10%</li>
+                                        </ul>
+                                        <button class="btn btn-primary" onclick="showDepositModal(50)">Invest Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Bronze Package -->
+                            <div class="col-md-4 mb-4">
+                                <div class="card package-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title fw-bold">BRONZE PACKAGE</h5>
+                                        <div class="price">$100 USDT</div>
+                                        <ul class="mb-4">
+                                            <li>Daily 2% for 150 days</li>
+                                            <li>Up to 3X Income</li>
+                                            <li>Direct Income 10%</li>
+                                            <li>Level Income 1-10</li>
+                                            <li>Upgrade Income 10%</li>
+                                        </ul>
+                                        <button class="btn btn-primary" onclick="showDepositModal(100)">Invest Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Platinum Package -->
+                            <div class="col-md-4 mb-4">
+                                <div class="card package-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title fw-bold">PLATINUM PACKAGE</h5>
+                                        <div class="price">$250 USDT</div>
+                                        <ul class="mb-4">
+                                            <li>Daily 3% for 150 days</li>
+                                            <li>Up to 3X Income</li>
+                                            <li>Direct Income 10%</li>
+                                            <li>Level Income 1-10</li>
+                                            <li>Upgrade Income 10%</li>
+                                            <li>Salary Bonus</li>
+                                        </ul>
+                                        <button class="btn btn-primary" onclick="showDepositModal(250)">Invest Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Gold Package -->
+                            <div class="col-md-4 mb-4">
+                                <div class="card package-card premium-package h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title fw-bold">GOLD PACKAGE</h5>
+                                        <div class="price">$500 USDT</div>
+                                        <ul class="mb-4">
+                                            <li>Daily 3% for 150 days</li>
+                                            <li>Up to 3X Income</li>
+                                            <li>Direct Income 10%</li>
+                                            <li>Level Income 1-10</li>
+                                            <li>Upgrade Income 10%</li>
+                                            <li>Salary Bonus</li>
+                                            <li>Freedom Bonus</li>
+                                        </ul>
+                                        <button class="btn btn-primary" onclick="showDepositModal(500)">Invest Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Earnings Section -->
+                    <div id="earningsSection" style="display: none;">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2 class="h4 fw-bold">My Earnings</h2>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-4 col-6 mb-3">
+                                <div class="income-card" style="background-color: var(--primary);">
+                                    <i class="fas fa-user-friends"></i>
+                                    <div class="card-value" id="directEarnings">$0.00</div>
+                                    <div class="card-label">Direct Income</div>
+                                    <span class="card-badge">10% per member</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 mb-3">
+                                <div class="income-card" style="background-color: var(--secondary);">
+                                    <i class="fas fa-level-up-alt"></i>
+                                    <div class="card-value" id="upgradeEarnings">$0.00</div>
+                                    <div class="card-label">Upgrade Income</div>
+                                    <span class="card-badge">10% per upgrade</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 mb-3">
+                                <div class="income-card" style="background-color: #0984e3;">
+                                    <i class="fas fa-sitemap"></i>
+                                    <div class="card-value" id="levelEarnings">$0.00</div>
+                                    <div class="card-label">Level Income</div>
+                                    <span class="card-badge">1-10 levels</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 mb-3">
+                                <div class="income-card" style="background-color: var(--warning); color: var(--dark);">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <div class="card-value" id="salaryEarnings">$0.00</div>
+                                    <div class="card-label">Salary Bonus</div>
+                                    <span class="card-badge">Monthly</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 mb-3">
+                                <div class="income-card" style="background-color: #636e72; color: white;">
+                                    <i class="fas fa-chart-line"></i>
+                                    <div class="card-value" id="compoundingEarnings">$0.00</div>
+                                    <div class="card-label">Daily Compounding</div>
+                                    <span class="card-badge">2% daily</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 mb-3">
+                                <div class="income-card" style="background-color: var(--danger);">
+                                    <i class="fas fa-award"></i>
+                                    <div class="card-value" id="freedomEarnings">$0.00</div>
+                                    <div class="card-label">Freedom Bonus</div>
+                                    <span class="card-badge">Weekly</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="m-0 fw-bold">Earnings History</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Type</th>
+                                                <th>Amount</th>
+                                                <th>From</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="earningsHistoryBody">
+                                            <tr>
+                                                <td colspan="5" class="text-center">No earnings history</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Section -->
+                    <div id="teamSection" style="display: none;">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2 class="h4 fw-bold">My Team</h2>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h6 class="m-0 fw-bold">Team Statistics</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <h6 class="text-muted">Direct Team</h6>
+                                                <h3 id="directTeamCount">0</h3>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <h6 class="text-muted">Total Team</h6>
+                                                <h3 id="totalTeamCount">0</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <h6 class="text-muted">Team Investment</h6>
+                                                <h3 id="teamInvestment">$0.00</h3>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <h6 class="text-muted">Team Earnings</h6>
+                                                <h3 id="teamEarnings">$0.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h6 class="m-0 fw-bold">Referral Link</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" id="referralLink" readonly>
+                                            <button class="btn btn-primary" type="button" onclick="copyReferralLink()">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </div>
+                                        <p class="text-muted small">Share this link to earn 10% direct income from every deposit</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="m-0 fw-bold">Team Structure</h6>
+                            </div>
+                            <div class="card-body">
+                                <div id="teamTree" class="text-center py-4">
+                                    <i class="fas fa-users fa-3x text-muted mb-3"></i>
+                                    <p class="text-muted">Team visualization will appear here</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Withdraw Section -->
+                    <div id="withdrawSection" style="display: none;">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2 class="h4 fw-bold">Withdraw Funds</h2>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="m-0 fw-bold">Withdraw USDT</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="withdrawForm">
+                                            <div class="mb-3">
+                                                <label for="withdrawAmount" class="form-label">Amount (USDT)</label>
+                                                <input type="number" class="form-control" id="withdrawAmount" min="100" step="1" required>
+                                                <div class="form-text small">Minimum withdrawal: 100 USDT (10% fee applies)</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="walletAddress" class="form-label">USDT (BEP-20) Wallet Address</label>
+                                                <input type="text" class="form-control" id="walletAddress" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Request Withdrawal</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="m-0 fw-bold">Withdrawal History</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Amount</th>
+                                                        <th>Fee</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="withdrawalHistoryBody">
+                                                    <tr>
+                                                        <td colspan="4" class="text-center">No withdrawal history</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rewards Section -->
+                    <div id="rewardsSection" style="display: none;">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2 class="h4 fw-bold">Tour Rewards</h2>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-3 col-6 mb-4">
+                                <div class="card h-100">
+                                    <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Dubai">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title fw-bold">DUBAI TOUR</h5>
+                                        <p class="card-text small text-muted">Team Requirement: 200 members</p>
+                                        <div class="progress mb-3">
+                                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm" disabled>Not Qualified</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 col-6 mb-4">
+                                <div class="card h-100">
+                                    <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Thailand">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title fw-bold">THAILAND TOUR</h5>
+                                        <p class="card-text small text-muted">Team Requirement: 450 members</p>
+                                        <div class="progress mb-3">
+                                            <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm" disabled>Not Qualified</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 col-6 mb-4">
+                                <div class="card h-100">
+                                    <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Canada">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title fw-bold">CANADA TOUR</h5>
+                                        <p class="card-text small text-muted">Team Requirement: 1000 members</p>
+                                        <div class="progress mb-3">
+                                            <div class="progress-bar" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100">5%</div>
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm" disabled>Not Qualified</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 col-6 mb-4">
+                                <div class="card h-100">
+                                    <img src="https://ignitetravelsolution.com/wp-content/uploads/2024/06/Best-Malaysia-Tour-Packages.jpg" class="card-img-top" alt="Malaysia">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title fw-bold">MALAYSIA TOUR</h5>
+                                        <p class="card-text small text-muted">Team Requirement: 2500 members</p>
+                                        <div class="progress mb-3">
+                                            <div class="progress-bar" role="progressbar" style="width: 2%;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100">2%</div>
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm" disabled>Not Qualified</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Modal -->
+    <div class="modal fade" id="depositModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Make Deposit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="depositForm">
+                        <div class="mb-3">
+                            <label class="form-label">Package</label>
+                            <input type="text" class="form-control" id="depositPackage" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Amount (USDT)</label>
+                            <input type="text" class="form-control" id="depositAmount" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">USDT (BEP-20) Deposit Address</label>
+                            <input type="text" class="form-control" value="0x71C7656EC7ab88b098defB751B7401B5f6d8976F" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txHash" class="form-label">Transaction Hash</label>
+                            <input type="text" class="form-control" id="txHash" required placeholder="Enter your transaction hash">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txProof" class="form-label">Transaction Proof (Screenshot)</label>
+                            <input type="file" class="form-control" id="txProof" accept="image/*">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit Deposit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+  apiKey: "AIzaSyDKoLc8BQMi4_xdetXwRCobD5HJAbdL4m0",
+  authDomain: "ttttt10-e4c94.firebaseapp.com",
+  databaseURL: "https://ttttt10-e4c94-default-rtdb.firebaseio.com",
+  projectId: "ttttt10-e4c94",
+  storageBucket: "ttttt10-e4c94.firebasestorage.app",
+  messagingSenderId: "841811266502",
+  appId: "1:841811266502:web:1a2838cadb90bb5cbc40c7"
+};
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // DOM elements
+        const authScreens = document.getElementById('authScreens');
+        const app = document.getElementById('app');
+        const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+        const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        const depositModal = new bootstrap.Modal(document.getElementById('depositModal'));
+        
+        // Current user data
+        let currentUser = null;
+        let userData = null;
+
+        // Initialize the app
+        function initApp() {
+            // Show registration modal by default
+            registerModal.show();
+            
+            // Check auth state
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    // User is signed in
+                    currentUser = user;
+                    fetchUserData(user.uid);
+                    app.style.display = 'block';
+                    authScreens.style.display = 'none';
+                    registerModal.hide();
+                    loginModal.hide();
+                } else {
+                    // User is signed out
+                    app.style.display = 'none';
+                    authScreens.style.display = 'block';
+                }
+            });
+            
+            // Event listeners
+            document.getElementById('registerForm').addEventListener('submit', handleRegister);
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('depositForm').addEventListener('submit', handleDeposit);
+            document.getElementById('withdrawForm').addEventListener('submit', handleWithdraw);
+        }
+
+        // Handle registration
+        function handleRegister(e) {
+            e.preventDefault();
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const username = document.getElementById('regUsername').value;
+            const referral = document.getElementById('regReferral').value;
+            
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Create user document with all MLM fields
+                    return db.collection('users').doc(userCredential.user.uid).set({
+                        username: username,
+                        email: email,
+                        balance: 0,
+                        referralId: generateReferralId(),
+                        referredBy: referral || null,
+                        joinDate: new Date(),
+                        packages: [],
+                        earnings: {
+                            direct: 0,
+                            upgrade: 0,
+                            level: 0,
+                            salary: 0,
+                            freedom: 0,
+                            compounding: 0,
+                            total: 0
+                        },
+                        team: {
+                            direct: [],
+                            total: 0,
+                            investment: 0,
+                            earnings: 0
+                        },
+                        transactions: [],
+                        rewards: {
+                            dubai: { qualified: false, progress: 25 },
+                            thailand: { qualified: false, progress: 10 },
+                            canada: { qualified: false, progress: 5 },
+                            malaysia: { qualified: false, progress: 2 }
+                        },
+                        walletAddress: "",
+                        lastEarningDate: null
+                    });
+                })
+                .then(() => {
+                    // Update upline user's team if referred
+                    if (referral) {
+                        return db.collection('users').where('referralId', '==', referral).get()
+                            .then((querySnapshot) => {
+                                if (!querySnapshot.empty) {
+                                    const uplineUser = querySnapshot.docs[0];
+                                    return db.collection('users').doc(uplineUser.id).update({
+                                        'team.direct': firebase.firestore.FieldValue.arrayUnion({
+                                            userId: userCredential.user.uid,
+                                            username: username,
+                                            joinDate: new Date()
+                                        }),
+                                        'team.total': firebase.firestore.FieldValue.increment(1)
+                                    });
+                                }
+                            });
+                    }
+                })
+                .then(() => {
+                    // Auto login after registration
+                    return auth.signInWithEmailAndPassword(email, password);
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        }
+
+        // Handle login
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            auth.signInWithEmailAndPassword(email, password)
+                .catch((error) => {
+                    alert(error.message);
+                });
+        }
+
+        // Fetch user data
+        function fetchUserData(uid) {
+            db.collection('users').doc(uid).onSnapshot((doc) => {
+                if (doc.exists) {
+                    userData = doc.data();
+                    updateUserUI();
+                    
+                    // Check and add daily earnings if needed
+                    checkDailyEarnings(uid);
+                }
+            });
+        }
+
+        // Check and add daily earnings if it's a new day
+        function checkDailyEarnings(uid) {
+            const today = new Date().toDateString();
+            const lastEarningDate = userData.lastEarningDate ? new Date(userData.lastEarningDate.seconds * 1000).toDateString() : null;
+            
+            if (lastEarningDate !== today) {
+                calculateDailyEarnings(uid);
+            }
+        }
+
+        // Calculate daily earnings from packages
+        function calculateDailyEarnings(uid) {
+            let dailyEarnings = 0;
+            const today = new Date();
+            
+            userData.packages.forEach(pkg => {
+                if (pkg.status === 'active') {
+                    const rate = pkg.amount >= 250 ? 0.03 : 0.02; // 3% for $250+ packages
+                    const earning = pkg.amount * rate;
+                    dailyEarnings += earning;
+                    
+                    // Update package days active
+                    pkg.daysActive = (pkg.daysActive || 0) + 1;
+                    
+                    // Check if package has completed its cycle
+                    if (pkg.daysActive >= 150) {
+                        pkg.status = 'completed';
+                    }
+                }
+            });
+            
+            if (dailyEarnings > 0) {
+                const transaction = {
+                    type: 'earning',
+                    earningType: 'daily',
+                    amount: dailyEarnings,
+                    date: today,
+                    status: 'completed'
+                };
+                
+                // Update user data
+                db.collection('users').doc(uid).update({
+                    balance: firebase.firestore.FieldValue.increment(dailyEarnings),
+                    'earnings.compounding': firebase.firestore.FieldValue.increment(dailyEarnings),
+                    'earnings.total': firebase.firestore.FieldValue.increment(dailyEarnings),
+                    lastEarningDate: today,
+                    packages: userData.packages,
+                    transactions: firebase.firestore.FieldValue.arrayUnion(transaction)
+                }).then(() => {
+                    // Update upline users with level income
+                    updateUplineLevelIncome(uid, dailyEarnings);
+                });
+            } else {
+                // Just update the last earning date
+                db.collection('users').doc(uid).update({
+                    lastEarningDate: today
+                });
+            }
+        }
+
+        // Update upline users with level income (1-10 levels)
+        function updateUplineLevelIncome(userId, amount) {
+            const levels = 10;
+            const levelPercents = [0.05, 0.03, 0.02, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01]; // 5%, 3%, 2%, 1%...
+            
+            let currentUserId = userId;
+            
+            // Process each level
+            for (let level = 0; level < levels; level++) {
+                db.collection('users').doc(currentUserId).get()
+                    .then((doc) => {
+                        if (doc.exists) {
+                            const user = doc.data();
+                            if (user.referredBy) {
+                                // Find upline user by referral ID
+                                return db.collection('users').where('referralId', '==', user.referredBy).get()
+                                    .then((querySnapshot) => {
+                                        if (!querySnapshot.empty) {
+                                            const uplineUser = querySnapshot.docs[0];
+                                            const levelIncome = amount * levelPercents[level];
+                                            
+                                            // Update upline user's earnings
+                                            return db.collection('users').doc(uplineUser.id).update({
+                                                balance: firebase.firestore.FieldValue.increment(levelIncome),
+                                                'earnings.level': firebase.firestore.FieldValue.increment(levelIncome),
+                                                'earnings.total': firebase.firestore.FieldValue.increment(levelIncome),
+                                                transactions: firebase.firestore.FieldValue.arrayUnion({
+                                                    type: 'earning',
+                                                    earningType: `level ${level + 1}`,
+                                                    amount: levelIncome,
+                                                    from: user.username,
+                                                    date: new Date(),
+                                                    status: 'completed'
+                                                })
+                                            }).then(() => {
+                                                currentUserId = uplineUser.id;
+                                            });
+                                        }
+                                    });
+                            }
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error updating level income:", error);
+                    });
+            }
+        }
+
+        // Update user UI with all data
+        function updateUserUI() {
+            // Basic info
+            document.getElementById('usernameDisplay').textContent = userData.username;
+            document.getElementById('totalBalance').textContent = `$${userData.balance.toFixed(2)}`;
+            document.getElementById('referralLink').value = `${window.location.origin}?ref=${userData.referralId}`;
+            
+            // Calculate daily earnings based on packages
+            const dailyEarnings = userData.packages.reduce((sum, pkg) => {
+                if (pkg.status === 'active') {
+                    const rate = pkg.amount >= 250 ? 0.03 : 0.02; // 3% for $250+ packages
+                    return sum + (pkg.amount * rate);
+                }
+                return sum;
+            }, 0);
+            document.getElementById('dailyEarnings').textContent = `$${dailyEarnings.toFixed(2)}`;
+            
+            // Team stats
+            document.getElementById('teamSize').textContent = userData.team.total;
+            document.getElementById('directTeamCount').textContent = userData.team.direct.length;
+            document.getElementById('totalTeamCount').textContent = userData.team.total;
+            document.getElementById('teamInvestment').textContent = `$${userData.team.investment.toFixed(2)}`;
+            document.getElementById('teamEarnings').textContent = `$${userData.team.earnings.toFixed(2)}`;
+            
+            // Earnings
+            document.getElementById('directEarnings').textContent = `$${userData.earnings.direct.toFixed(2)}`;
+            document.getElementById('upgradeEarnings').textContent = `$${userData.earnings.upgrade.toFixed(2)}`;
+            document.getElementById('levelEarnings').textContent = `$${userData.earnings.level.toFixed(2)}`;
+            document.getElementById('salaryEarnings').textContent = `$${userData.earnings.salary.toFixed(2)}`;
+            document.getElementById('compoundingEarnings').textContent = `$${userData.earnings.compounding.toFixed(2)}`;
+            document.getElementById('freedomEarnings').textContent = `$${userData.earnings.freedom.toFixed(2)}`;
+            
+            // Packages table
+            updatePackagesTable();
+            
+            // Transactions
+            updateTransactionsUI();
+        }
+
+        // Show deposit modal for specific package
+        function showDepositModal(amount) {
+            const packageName = getPackageName(amount);
+            document.getElementById('depositPackage').value = packageName;
+            document.getElementById('depositAmount').value = amount;
+            depositModal.show();
+        }
+
+        // Handle deposit submission
+        function handleDeposit(e) {
+            e.preventDefault();
+            const amount = parseFloat(document.getElementById('depositAmount').value);
+            const txHash = document.getElementById('txHash').value;
+            const packageName = document.getElementById('depositPackage').value;
+            
+            // Create new package
+            const newPackage = {
+                name: packageName,
+                amount: amount,
+                status: 'pending',
+                purchaseDate: new Date(),
+                daysActive: 0
+            };
+            
+            // Add to user's packages and transactions
+            db.collection('users').doc(currentUser.uid).update({
+                packages: firebase.firestore.FieldValue.arrayUnion(newPackage),
+                transactions: firebase.firestore.FieldValue.arrayUnion({
+                    type: 'deposit',
+                    amount: amount,
+                    package: packageName,
+                    status: 'pending',
+                    date: new Date(),
+                    txHash: txHash
+                })
+            }).then(() => {
+                // Update upline user with direct income if referred
+                if (userData.referredBy) {
+                    return db.collection('users').where('referralId', '==', userData.referredBy).get()
+                        .then((querySnapshot) => {
+                            if (!querySnapshot.empty) {
+                                const uplineUser = querySnapshot.docs[0];
+                                const directIncome = amount * 0.1; // 10% direct income
+                                
+                                return db.collection('users').doc(uplineUser.id).update({
+                                    balance: firebase.firestore.FieldValue.increment(directIncome),
+                                    'earnings.direct': firebase.firestore.FieldValue.increment(directIncome),
+                                    'earnings.total': firebase.firestore.FieldValue.increment(directIncome),
+                                    'team.investment': firebase.firestore.FieldValue.increment(amount),
+                                    'team.earnings': firebase.firestore.FieldValue.increment(directIncome),
+                                    transactions: firebase.firestore.FieldValue.arrayUnion({
+                                        type: 'earning',
+                                        earningType: 'direct',
+                                        amount: directIncome,
+                                        from: userData.username,
+                                        date: new Date(),
+                                        status: 'completed'
+                                    })
+                                });
+                            }
+                        });
+                }
+            }).then(() => {
+                alert('Deposit submitted for approval');
+                depositModal.hide();
+                document.getElementById('depositForm').reset();
+            }).catch((error) => {
+                alert(error.message);
+            });
+        }
+
+        // Handle withdrawal request
+        function handleWithdraw(e) {
+            e.preventDefault();
+            const amount = parseFloat(document.getElementById('withdrawAmount').value);
+            const wallet = document.getElementById('walletAddress').value;
+            const fee = amount * 0.1; // 10% fee
+            const netAmount = amount - fee;
+            
+            if (amount > userData.balance) {
+                alert('Insufficient balance');
+                return;
+            }
+            
+            if (amount < 100) { // Minimum $100
+                alert('Minimum withdrawal is 100 USDT');
+                return;
+            }
+            
+            // Update user data
+            db.collection('users').doc(currentUser.uid).update({
+                balance: firebase.firestore.FieldValue.increment(-amount),
+                walletAddress: wallet,
+                transactions: firebase.firestore.FieldValue.arrayUnion({
+                    type: 'withdrawal',
+                    amount: amount,
+                    fee: fee,
+                    netAmount: netAmount,
+                    wallet: wallet,
+                    status: 'pending',
+                    date: new Date()
+                })
+            }).then(() => {
+                alert('Withdrawal request submitted');
+                document.getElementById('withdrawForm').reset();
+            }).catch((error) => {
+                alert(error.message);
+            });
+        }
+
+        // Update packages table
+        function updatePackagesTable() {
+            const tableBody = document.getElementById('packagesTableBody');
+            tableBody.innerHTML = '';
+            
+            if (userData.packages.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="4" class="text-center">No active packages</td></tr>';
+                return;
+            }
+            
+            userData.packages.forEach(pkg => {
+                const row = document.createElement('tr');
+                
+                const nameCell = document.createElement('td');
+                nameCell.textContent = pkg.name;
+                
+                const amountCell = document.createElement('td');
+                amountCell.textContent = `$${pkg.amount.toFixed(2)}`;
+                
+                const earnedCell = document.createElement('td');
+                const daysActive = pkg.daysActive || 0;
+                const rate = pkg.amount >= 250 ? 0.03 : 0.02;
+                const earned = pkg.amount * rate * daysActive;
+                earnedCell.textContent = `$${earned.toFixed(2)}`;
+                
+                const statusCell = document.createElement('td');
+                const statusBadge = document.createElement('span');
+                statusBadge.className = `badge ${pkg.status === 'active' ? 'bg-success' : pkg.status === 'completed' ? 'bg-primary' : 'bg-warning'}`;
+                statusBadge.textContent = pkg.status.charAt(0).toUpperCase() + pkg.status.slice(1);
+                statusCell.appendChild(statusBadge);
+                
+                row.appendChild(nameCell);
+                row.appendChild(amountCell);
+                row.appendChild(earnedCell);
+                row.appendChild(statusCell);
+                
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Update transactions UI
+        function updateTransactionsUI() {
+            const earningsBody = document.getElementById('earningsTableBody');
+            const earningsHistoryBody = document.getElementById('earningsHistoryBody');
+            const withdrawalBody = document.getElementById('withdrawalHistoryBody');
+            
+            earningsBody.innerHTML = '';
+            earningsHistoryBody.innerHTML = '';
+            withdrawalBody.innerHTML = '';
+            
+            if (userData.transactions.length === 0) {
+                earningsBody.innerHTML = '<tr><td colspan="3" class="text-center">No recent earnings</td></tr>';
+                earningsHistoryBody.innerHTML = '<tr><td colspan="5" class="text-center">No earnings history</td></tr>';
+                withdrawalBody.innerHTML = '<tr><td colspan="4" class="text-center">No withdrawal history</td></tr>';
+                return;
+            }
+            
+            // Filter and sort transactions
+            const earnings = userData.transactions
+                .filter(tx => tx.type === 'earning' && tx.earningType === 'daily')
+                .slice(-5)
+                .reverse();
+            
+            const allEarnings = userData.transactions
+                .filter(tx => tx.type === 'earning')
+                .slice(-10)
+                .reverse();
+            
+            const withdrawals = userData.transactions
+                .filter(tx => tx.type === 'withdrawal')
+                .slice(-5)
+                .reverse();
+            
+            // Populate recent earnings table
+            if (earnings.length > 0) {
+                earnings.forEach(earning => {
+                    const row = document.createElement('tr');
+                    
+                    const dateCell = document.createElement('td');
+                    dateCell.textContent = new Date(earning.date.seconds * 1000).toLocaleDateString();
+                    
+                    const typeCell = document.createElement('td');
+                    typeCell.textContent = 'Daily';
+                    
+                    const amountCell = document.createElement('td');
+                    amountCell.textContent = `$${earning.amount.toFixed(2)}`;
+                    
+                    row.appendChild(dateCell);
+                    row.appendChild(typeCell);
+                    row.appendChild(amountCell);
+                    
+                    earningsBody.appendChild(row);
+                });
+            } else {
+                earningsBody.innerHTML = '<tr><td colspan="3" class="text-center">No recent earnings</td></tr>';
+            }
+            
+            // Populate earnings history table
+            if (allEarnings.length > 0) {
+                allEarnings.forEach(earning => {
+                    const row = document.createElement('tr');
+                    
+                    const dateCell = document.createElement('td');
+                    dateCell.textContent = new Date(earning.date.seconds * 1000).toLocaleDateString();
+                    
+                    const typeCell = document.createElement('td');
+                    typeCell.textContent = earning.earningType.charAt(0).toUpperCase() + earning.earningType.slice(1);
+                    
+                    const amountCell = document.createElement('td');
+                    amountCell.textContent = `$${earning.amount.toFixed(2)}`;
+                    
+                    const fromCell = document.createElement('td');
+                    fromCell.textContent = earning.from || 'System';
+                    
+                    const statusCell = document.createElement('td');
+                    const statusBadge = document.createElement('span');
+                    statusBadge.className = 'badge bg-success';
+                    statusBadge.textContent = 'Completed';
+                    statusCell.appendChild(statusBadge);
+                    
+                    row.appendChild(dateCell);
+                    row.appendChild(typeCell);
+                    row.appendChild(amountCell);
+                    row.appendChild(fromCell);
+                    row.appendChild(statusCell);
+                    
+                    earningsHistoryBody.appendChild(row);
+                });
+            } else {
+                earningsHistoryBody.innerHTML = '<tr><td colspan="5" class="text-center">No earnings history</td></tr>';
+            }
+            
+            // Populate withdrawals table
+            if (withdrawals.length > 0) {
+                withdrawals.forEach(withdrawal => {
+                    const row = document.createElement('tr');
+                    
+                    const dateCell = document.createElement('td');
+                    dateCell.textContent = new Date(withdrawal.date.seconds * 1000).toLocaleDateString();
+                    
+                    const amountCell = document.createElement('td');
+                    amountCell.textContent = `$${withdrawal.amount.toFixed(2)}`;
+                    
+                    const feeCell = document.createElement('td');
+                    feeCell.textContent = `$${withdrawal.fee.toFixed(2)}`;
+                    
+                    const statusCell = document.createElement('td');
+                    const statusBadge = document.createElement('span');
+                    statusBadge.className = `badge ${withdrawal.status === 'completed' ? 'bg-success' : 'bg-warning'}`;
+                    statusBadge.textContent = withdrawal.status.charAt(0).toUpperCase() + withdrawal.status.slice(1);
+                    statusCell.appendChild(statusBadge);
+                    
+                    row.appendChild(dateCell);
+                    row.appendChild(amountCell);
+                    row.appendChild(feeCell);
+                    row.appendChild(statusCell);
+                    
+                    withdrawalBody.appendChild(row);
+                });
+            } else {
+                withdrawalBody.innerHTML = '<tr><td colspan="4" class="text-center">No withdrawal history</td></tr>';
+            }
+        }
+
+        // Show section
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('#dashboardSection, #investSection, #earningsSection, #teamSection, #withdrawSection, #rewardsSection').forEach(div => {
+                div.style.display = 'none';
+            });
+            
+            // Show selected section
+            document.getElementById(`${sectionId}Section`).style.display = 'block';
+            
+            // Update active nav link
+            document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('onclick').includes(sectionId)) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Show login modal
+        function showLogin() {
+            registerModal.hide();
+            loginModal.show();
+        }
+
+        // Show register modal
+        function showRegister() {
+            loginModal.hide();
+            registerModal.show();
+        }
+
+        // Copy referral link
+        function copyReferralLink() {
+            const link = document.getElementById('referralLink');
+            link.select();
+            document.execCommand('copy');
+            alert('Referral link copied to clipboard!');
+        }
+
+        // Generate random referral ID
+        function generateReferralId() {
+            return Math.random().toString(36).substring(2, 8).toUpperCase();
+        }
+
+        // Get package name from amount
+        function getPackageName(amount) {
+            const packages = {
+                10: 'Basic',
+                25: 'Standard',
+                50: 'Silver',
+                100: 'Bronze',
+                250: 'Platinum',
+                500: 'Gold',
+                1000: 'Luxury',
+                2500: 'Premium',
+                5000: 'Diamond',
+                10000: 'VIP'
+            };
+            return packages[amount] || 'Custom';
+        }
+
+        // Logout
+        function logout() {
+            auth.signOut();
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
